@@ -9,17 +9,17 @@ number:
 date:
 consensus: true
 v: 3
-area: WIT
-workgroup: aipref
+# area: WIT
+# workgroup: aipref
 keyword:
 
 venue:
-  group: WG
-  type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+#  group: WG
+#  type: Working Group
+#  mail: WG@example.com
+#  arch: https://example.com/WG
+  github: "Farzaneh-Unicode/enduser-AIpref"
+  latest: "https://Farzaneh-Unicode.github.io/enduser-AIpref/draft-farzdusa-Aipref-enduser.html"
 
 author:
  -
