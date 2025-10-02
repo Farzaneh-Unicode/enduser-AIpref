@@ -2,7 +2,7 @@
 
 
 
-aipref                                                          F. Badii
+Network Working Group                                           F. Badii
 Internet-Draft                                             DigitalMedusa
 Intended status: Informational                            2 October 2025
 Expires: 5 April 2026
@@ -13,23 +13,19 @@ Expires: 5 April 2026
 
 Abstract
 
-   TODO Abstract
+   Testing
 
 About This Document
 
    This note is to be removed before publishing as an RFC.
 
-   The latest revision of this draft can be found at
-   https://example.com/LATEST.  Status information for this document may
-   be found at https://datatracker.ietf.org/doc/draft-farzdusa-Aipref-
-   enduser/.
-
-   Discussion of this document takes place on the WG Working Group
-   mailing list (mailto:WG@example.com), which is archived at
-   https://example.com/WG.
+   The latest revision of this draft can be found at https://Farzaneh-
+   Unicode.github.io/enduser-AIpref/draft-farzdusa-Aipref-enduser.html.
+   Status information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-farzdusa-Aipref-enduser/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/USER/REPO.
+   https://github.com/Farzaneh-Unicode/enduser-AIpref.
 
 Status of This Memo
 
