@@ -1,5 +1,5 @@
 ---
-title: "Enduser perspective"
+title: "AI Preferences Signaling and the Impact on End Users "
 abbrev: "Enduser perspective"
 category: info
 
@@ -42,7 +42,8 @@ Testing
 
 # Introduction
 
-TODO Introduction
+
+Standards can have a major impact on end users across technological, legal, ethical, and governance dimensions, largely centering around access to information, control over their digital contributions, and data privacy. The purpose of this Internet Draft is to document the potential impact of signaling AI preferences on end users other than publishers. 
 
 
 # Conventions and Definitions
