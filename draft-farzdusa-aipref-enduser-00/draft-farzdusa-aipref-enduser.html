@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="en" class="Internet-Draft">
+<head>
+<meta charset="utf-8">
+<meta content="Common,Latin" name="scripts">
+<meta content="initial-scale=1.0" name="viewport">
+<title>AI Preferences Signaling: End User Impact</title>
+<meta content="Farzaneh Badii" name="author">
+<meta content="Lila Bailey" name="author">
+<meta content="Jo Levy" name="author">
+<meta content="
+       Standards can have a major impact on end users across technological, legal, ethical, and governance dimensions, largely centering around access to information, control over their digital contributions, and data privacy. The purpose of this Internet Draft is to document the potential impact of signaling AI preferences on end users other than publishers, and to suggest some principles for the ai-pref working group to consider when assessing proposed vocabulary and definitions IETF wishes to standardize for signaling. 
+    " name="description">
+<meta content="xml2rfc 3.31.0" name="generator">
+<meta content="draft-farzdusa-aipref-enduser-latest" name="ietf.draft">
+<!-- Generator version information:
+  xml2rfc 3.31.0
+    Python 3.12.12
+    ConfigArgParse 1.7
+    google-i18n-address 3.1.1
+    intervaltree 3.1.0
+    Jinja2 3.1.6
+    lxml 5.3.1
+    platformdirs 4.5.0
+    pycountry 24.6.1
+    PyYAML 6.0.2
+    requests 2.32.5
+    wcwidth 0.2.14
+-->
+<link href="draft-farzdusa-aipref-enduser.xml" rel="alternate" type="application/rfc+xml">
+<link href="#copyright" rel="license">
+<style type="text/css">@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Lora SemiBold'), local('Lora-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-semibold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  color-scheme: light dark;
+  --background-color: #fff;
+  --text-color: #222;
+  --title-color: #191919;
+  --link-color: #2a6496;
+  --highlight-color: #f9f9f9;
+  --line-color: #eee;
+  --pilcrow-weak: #ddd;
+  --pilcrow-strong: #bbb;
+  --small-font-size: 14.5px;
+  --font-mono: 'Oxygen Mono', monospace;
+  --font-title: "Sofia Sans Semi Condensed", sans-serif;
+  scrollbar-color: #bbb #eee;
+}
+body {
+  max-width: 600px;
+  margin: 75px auto;
+  padding: 0 5px;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  font: 16px/22px "Lora", serif;
+  scroll-behavior: smooth;
+}
+
+.ears {
+  display: none;
+}
+
+/* headings */
+section {
+  clear: both;
+}
+.section-number {
+  padding-right: 0.5em;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: 680;
+  margin: 0.8em 0 0.3em;
+  font-size-adjust: 0.5;
+  color: var(--title-color);
+}
+h1#title {
+  font-size: 32px;
+  line-height: 40px;
+  clear: both;
+}
+h1#title, h1#rfcnum {
+  margin: 1.5em 0 0.2em;
+}
+h1#rfcnum + h1#title {
+  margin: 0.2em 0;
+}
+
+h1, h2, h3 {
+  font-size: 22px;
+  line-height: 27px;
+}
+h4, h5, h6 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+/* general structure */
+.author {
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+#abstract+p {
+  font-size: 18px;
+  line-height: 24px;
+}
+#abstract+p code, #abstract+p samp, #abstract+p tt {
+  font-size: 16px;
+  line-height: 0;
+}
+
+p {
+  padding: 0;
+  margin: 0.5em 0;
+  text-align: left;
+}
+div {
+  margin: 0;
+}
+.alignRight.art-text {
+  background-color: var(--highlight-color);
+  border: 1px solid var(--line-color);
+  border-radius: 3px;
+  padding: 0.5em 1em 0;
+  margin-bottom: 0.5em;
+}
+.alignRight.art-text pre {
+  padding: 0;
+  width: auto;
+}
+.alignRight {
+  margin: 1em 0;
+}
+.alignRight > *:first-child {
+  border: none;
+  margin: 0;
+  float: right;
+  clear: both;
+}
+.alignRight > *:nth-child(2) {
+  clear: both;
+  display: block;
+  border: none;
+}
+svg {
+  display: block;
+}
+/* font-family isn't space-separated, but =~ will have to do */
+svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+  font-family: var(--font-mono);
+}
+.alignCenter.art-text {
+  background-color: var(--highlight-color);
+  border: 1px solid var(--line-color);
+  border-radius: 3px;
+  padding: 0.5em 1em 0;
+  margin-bottom: 0.5em;
+}
+.alignCenter.art-text pre {
+  padding: 0;
+  width: auto;
+}
+.alignCenter {
+  margin: 1em 0;
+}
+.alignCenter > *:first-child {
+  border: none;
+  /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+     support flexbox yet.
+  */
+  display: table;
+  margin: 0 auto;
+}
+
+/* lists */
+ol, ul {
+  padding: 0;
+  margin: 0 0 0.5em 2em;
+  & :is(ol, ul) {
+    margin-left: 1em;
+  }
+}
+li {
+  margin: 0 0 0.25em 0;
+}
+ul.empty, .ulEmpty {
+  list-style-type: none;
+  & li {
+    margin-top: 0.5em;
+  }
+}
+:is(ul, ol).compact, .ulCompact, .olCompact {
+  margin: 0 0 0 2em;
+  & li {
+    margin: 0;
+    & :first-child { margin-top: 0; }
+    & :last-child { margin-bottom: 0; }
+  }
+}
+
+/* definition lists */
+dl {
+  clear: left;
+  --indent: 3ch;
+  /* --indent: attr(indent ch); not supported in any browser, but we can dream */
+  &.olPercent {
+    --indent: 5ch;
+    & > dt {
+      min-width: calc(var(--indent) - 2ch);
+    }
+  }
+  &.olPercent > dt {
+    float: none;
+  }
+
+  dl > dd > & {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+  }
+}
+dl:not(.dlNewline) > dt {
+  float: left;
+  margin-right: 2ch;
+  min-width: 8ch;
+}
+dl > dd {
+  margin-bottom: .8em;
+  margin-left: var(--indent) !important; /* stupid element overrides */
+  min-height: 2ex;
+}
+:is(dl.compact, .dlCompact) > dd {
+  margin-bottom: 0;
+  & > :is(:first-child, .break:first-child + *) {
+    margin-top: 0;
+  }
+  & > :is(:last-child) {
+    margin-bottom: 0;
+  }
+}
+:is(dd, span).break {
+  display: none;
+}
+
+/* links */
+a, a[href].selfRef:hover {
+  text-decoration: none;
+}
+a[href] {
+  color: var(--link-color);
+}
+a[href].selfRef, .iref + a[href].internal {
+  color: var(--text-color);
+}
+a[href]:hover {
+  text-decoration: underline;
+}
+a[href].selfRef:hover {
+  background-color: var(--highlight-color);
+}
+a.xref:is(.cite, .auto), :is(#status-of-memo, #copyright) a {
+  white-space: nowrap;
+}
+
+/* Figures */
+tt, code, pre {
+  background-color: var(--highlight-color);
+  font: 14px/22px var(--font-mono);
+}
+tt, code {
+  /* changing the font for inline elements leads to different ascender
+     and descender heights; as we want to retain baseline alignment,
+     remove leading to avoid altering the final height of lines
+     note: this fails if these blocks take an entire line,
+     a different solution would be great */
+  line-height: 0;
+}
+:is(h1, h2, h3, h4, h5, h6) :is(tt, code) {
+  font-size: 84%;
+}
+pre {
+  border: 1px solid var(--line-color);
+  font-size: 13.5px;
+  line-height: 16px;
+  letter-spacing: -0.2px;
+  margin: 5px;
+  padding: 5px;
+}
+img {
+  max-width: 100%;
+}
+figure {
+  margin: 0.5em 0;
+  padding: 0;
+}
+figure blockquote {
+  margin: 0.8em 0.4em 0.4em;
+}
+figcaption, caption {
+  font-style: italic;
+  margin: 0.5em 1.5em;
+  text-align: left;
+  caption-side: bottom;
+}
+@media screen {
+  /* Auto-collapse boilerplate. */
+  :is(#status-of-memo, #copyright) p {
+    margin: -2px 0;
+    max-height: 0;
+    transition: max-height 2s ease, margin 0.5s ease 0.5s;
+    overflow: hidden;
+  }
+  :is(#status-of-memo, #copyright):hover p,
+  :is(#status-of-memo, #copyright) h2:target ~ p {
+    margin: 0.5em 0;
+    max-height: 500px;
+    overflow: auto;
+  }
+  pre, svg {
+    display: inline-block;
+    /* In the horizontal direction, sometimes people make over-sized figures.
+       Scrollbars for those is therefore necessary: auto adds them as necessary..
+       In the vertical direction, the line-height can combine with the font
+       asender/descender height to produce scrollbars: hidden avoids that. */
+    overflow: auto hidden;
+  }
+  pre {
+    max-width: 100%;
+    width: calc(100% - 22px - 1em);
+  }
+  svg {
+    max-width: calc(100% - 22px - 1em);
+  }
+  figure pre {
+    display: block;
+    width: calc(100% - 25px);
+  }
+  :is(pre, svg) + .pilcrow {
+    display: inline-block;
+    vertical-align: text-bottom;
+    padding-bottom: 8px;
+  }
+}
+
+/* aside, blockquote */
+aside, blockquote {
+  margin-left: 0;
+  padding: 0 2em;
+  font-style: italic;
+}
+blockquote {
+  margin: 1em 0;
+}
+cite {
+  display: block;
+  text-align: right;
+  font-style: italic;
+}
+
+/* tables */
+table {
+  width: auto;
+  max-width: 100%;
+  margin: 0 0 1em;
+  border-collapse: collapse;
+}
+table.right {
+  margin-left: auto;
+}
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+table.left {
+  margin-right: auto;
+}
+table .text-left {
+  text-align: left;
+}
+table .text-center {
+  text-align: center;
+}
+table .text-right {
+  text-align: right;
+}
+
+thead, tbody {
+  border: 1px solid var(--line-color);
+}
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 5px 10px;
+}
+th {
+  background-color: var(--line-color);
+}
+:is(tr:nth-child(2n), thead+tbody > tr:nth-child(2n+1)) > td {
+  background-color: var(--background-color);
+}
+:is(tr:nth-child(2n+1), thead+tbody > tr:nth-child(2n)) > td {
+  background-color: var(--highlight-color);
+}
+table caption {
+  margin: 0;
+  padding: 3px 0 3px 1em;
+}
+table p {
+  margin: 0;
+}
+
+/* pilcrow */
+a.pilcrow {
+  margin-left: 3px;
+  opacity: 0.2;
+  user-select: none;
+  &[href] {
+    color: var(--pilcrow-weak);
+    &:hover { text-decoration: none; }
+  }
+}
+@media not print {
+  :hover > a.pilcrow {
+    opacity: 1;
+  }
+  a.pilcrow[href]:hover {
+    color: var(--pilcrow-strong);
+    background-color: transparent;
+  }
+}
+@media print {
+  a.pilcrow {
+    display: none;
+  }
+}
+
+/* misc */
+hr {
+  border: 0;
+  border-top: 1px solid var(--line-color);
+}
+.bcp14 {
+  font-variant: small-caps;
+  font-weight: 600;
+  font-size: var(--small-font-size);
+}
+.role {
+  font-variant: all-small-caps;
+}
+sub, sup {
+  line-height: 1;
+  font-size: 80%;
+}
+
+/* info block */
+#identifiers {
+  margin: 0;
+  font-size: var(--small-font-size);
+  line-height: 18px;
+  --identifier-width: 15ch;
+  & dt {
+    width: var(--identifier-width);
+    min-width: var(--identifier-width);
+    clear: left;
+    float: left;
+    text-align: right;
+    margin-right: 1ch;
+  }
+  & dd {
+    margin: 0;
+    margin-left: calc(1em + var(--identifier-width)) !important;
+    min-width: 5em;
+  }
+  & .authors {
+    & .author {
+      display: inline-block;
+      margin-right: 1.5em;
+    }
+    & .org {
+      font-style: italic;
+    }
+  }
+}
+
+/* The prepared/rendered info at the very bottom of the page */
+.docInfo {
+  color: #999;
+  font-size: 0.9em;
+  font-style: italic;
+  margin-top: 2em;
+}
+.docInfo .prepared {
+  float: right;
+}
+
+/* table of contents */
+#toc {
+  padding: 0.75em 0 2em 0;
+  margin-bottom: 1em;
+
+  & nav {
+    & ul {
+      margin: 0 0.5em 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    & li {
+      line-height: 1.3em;
+      margin: 2px 0;
+      padding-left: 1.2em;
+      text-indent: -1.2em;
+    }
+  }
+  & a.xref {
+    white-space: normal;
+  }
+}
+
+.references {
+  & > dt {
+    text-align: right;
+    font-weight: bold;
+    min-width: 10ch;
+    margin-right: 1.5ch;
+    &:target::before {
+      content: "⇒";
+      margin: 0 10px 0 -25px;
+    }
+  }
+  & > dd {
+    margin-left: 12ch !important;
+    overflow: visible;
+    & .refInstance {
+      margin-bottom: 0.8em;
+    }
+    & .ascii {
+      margin-bottom: 0.25em;
+    }
+  }
+}
+
+#rfc\.index\.index + ul {
+  margin-left: 0;
+}
+
+/* authors */
+address.vcard {
+  font-style: normal;
+  max-width: 20em;
+  margin: 1em auto 1em 0;
+
+  & .nameRole {
+    font-weight: 700;
+    margin-left: 0;
+  }
+  & .label {
+    margin: 0.5em 0;
+  }
+  & .type {
+    display: none;
+  }
+  & .alternative-contact {
+    margin: 0.5em 0 0.25em 0;
+  }
+  & .non-ascii {
+    margin: 0 0 0 2em;
+  }
+  & div.left {
+    text-align: left;
+  }
+  & div.right {
+    text-align: right;
+  }
+}
+
+hr.addr {
+  border-top: 1px dashed;
+  margin: 0;
+  color: #ddd;
+  max-width: calc(100% - 16px);
+}
+@media (min-width: 500px) {
+  #authors-addresses > section {
+    column-count: 2;
+    column-gap: 20px;
+  }
+  #authors-addresses > section > h2 {
+    column-span: all;
+  }
+  /* hack for break-inside: avoid-column */
+  #authors-addresses address {
+    display: inline-block;
+    break-inside: avoid-column;
+  }
+}
+
+/* Comments */
+.rfcEditorRemove p:first-of-type {
+  font-style: italic;
+}
+.cref {
+  background-color: rgba(249, 232, 105, 0.3);
+  padding: 2px 4px;
+}
+.crefSource {
+  font-style: italic;
+}
+
+@media screen {
+  #toc nav {
+    font-family: var(--font-title);
+    font-weight: 360;
+    & > ul { margin-bottom: 2em; }
+    & ul {
+      margin: 0 0 0 4px;
+      & :is(p, li) {
+        margin: 2px 0;
+      }
+    }
+  }
+  #toc a.toplink {
+    float: right;
+  }
+}
+@media not screen {
+  #toc a.toplink {
+    display: none;
+  }
+}
+
+
+/* TOC layout for smaller screens */
+@media screen and (max-width: 929px) {
+  #toc {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    padding: 1px 0 0 0;
+    margin: 0;
+    border-bottom: 1px solid #ccc;
+    opacity: 0.6;
+  }
+  #toc h2 {
+    margin: 0;
+    padding: 2px 0 2px 6px;
+    padding-right: 1em;
+    font-size: 18px;
+    line-height: 24px;
+    min-width: 190px;
+    text-align: right;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+    &::before { /* css hamburger */
+      float: right;
+      position: relative;
+      width: 1em;
+      height: 1px;
+      left: -164px;
+      margin: 8px 0 0 0;
+      background: white none repeat scroll 0 0;
+      box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+      content: "";
+    }
+  }
+  #toc nav {
+    display: none;
+    background-color: var(--background-color);
+    padding: 0.5em 1em 1em;
+    overflow: auto;
+    overscroll-behavior: contain;
+    height: calc(100vh - 48px);
+    border-left: 1px solid #ddd;
+  }
+  #toc.active {
+    opacity: 1;
+    & nav { display: block; }
+  }
+  /* Make the collapsed ToC header render white on gray also when it's a link */
+  #toc h2 a,
+  #toc h2 a:is(:link, :focus, :hover),
+  #toc a.toplink,
+  #toc a.toplink:hover {
+    color: white;
+    background-color: #444;
+    text-decoration: none;
+  }
+  #toc a.toplink {
+    margin: 2px 0.5em 0;
+  }
+}
+
+/* TOC layout for wide screens */
+@media screen and (min-width: 930px) {
+  body {
+    padding-right: 360px;
+    padding-right: calc(min(180px + 20%, 500px));
+  }
+  #toc {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    right: calc(50vw - 480px);
+    width: 312px;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+  }
+  #toc h2 {
+    margin: 0;
+    padding: 0.25em 1em 1em 0;
+  }
+  #toc nav {
+    display: block;
+    height: calc(90vh - 84px);
+    bottom: 0;
+    padding: 0.5em 0 2em;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  img { /* future proofing */
+    max-width: 100%;
+    height: auto;
+  }
+  #toc a.toplink {
+    margin: 8px 0.5em 0;
+  }
+}
+
+/* pagination */
+@media print {
+  body {
+    width: 100%;
+  }
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  #n-copyright-notice {
+    border-bottom: none;
+  }
+  #toc, #n-introduction {
+    page-break-before: always;
+  }
+  #toc {
+    border-top: none;
+    padding-top: 0;
+  }
+  figure, pre, .vcard {
+    page-break-inside: avoid;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  :is(h2, h3, h4, h5, h6)+*, dd {
+    page-break-before: avoid;
+  }
+  pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 10pt;
+  }
+  table {
+    border: 1px solid #ddd;
+  }
+  td {
+    border-top: 1px solid #ddd;
+  }
+}
+
+@page :first {
+  padding-top: 0;
+  @top-left {
+    content: normal;
+    border: none;
+  }
+  @top-center {
+    content: normal;
+    border: none;
+  }
+  @top-right {
+    content: normal;
+    border: none;
+  }
+}
+
+@page {
+  size: A4;
+  margin-bottom: 45mm;
+  padding-top: 20px;
+}
+
+/* Dark mode. */
+@media (prefers-color-scheme: dark) {
+:root {
+  --background-color: #121212;
+  --text-color: #f0f0f0;
+  --title-color: #fff;
+  --link-color: #4da4f0;
+  --highlight-color: #282828;
+  --line-color: #444;
+  --pilcrow-weak: #444;
+  --pilcrow-strong: #666;
+  scrollbar-color: #777 #333;
+}
+}
+
+/* SVG Trick: a prefix match works because only black and white are allowed */
+svg :is([stroke="black"], [stroke^="#000"]) {
+  stroke: var(--text-color);
+}
+svg :is([stroke="white"], [stroke^="#fff"]) {
+  stroke: var(--background-color);
+}
+svg :is([fill="black"], [fill^="#000"], :not([fill])) {
+  fill: var(--text-color);
+}
+svg :is([fill="white"], [fill^="#fff"]) {
+  fill: var(--background-color);
+}
+</style>
+
+</head>
+<body class="xml2rfc">
+<table class="ears">
+<thead><tr>
+<td class="left">Internet-Draft</td>
+<td class="center">Impact on End Users</td>
+<td class="right">November 2025</td>
+</tr></thead>
+<tfoot><tr>
+<td class="left">Badii, et al.</td>
+<td class="center">Expires 30 May 2026</td>
+<td class="right">[Page]</td>
+</tr></tfoot>
+</table>
+<div id="external-metadata" class="document-information"></div>
+<div id="internal-metadata" class="document-information">
+<dl id="identifiers">
+<dt class="label-workgroup">Workgroup:</dt>
+<dd class="workgroup">AIPref</dd>
+<dt class="label-internet-draft">Internet-Draft:</dt>
+<dd class="internet-draft">draft-farzdusa-aipref-enduser-latest</dd>
+<dt class="label-published">Published:</dt>
+<dd class="published">
+<time datetime="2025-11-26" class="published">26 November 2025</time>
+    </dd>
+<dt class="label-intended-status">Intended Status:</dt>
+<dd class="intended-status">Informational</dd>
+<dt class="label-expires">Expires:</dt>
+<dd class="expires"><time datetime="2026-05-30">30 May 2026</time></dd>
+<dt class="label-authors">Authors:</dt>
+<dd class="authors">
+<div class="author">
+      <div class="author-name">F. Badii</div>
+<div class="org">Digital Medusa</div>
+</div>
+<div class="author">
+      <div class="author-name">L. Bailey</div>
+<div class="org">Internet Archive</div>
+</div>
+<div class="author">
+      <div class="author-name">J. Levy</div>
+</div>
+</dd>
+</dl>
+</div>
+<h1 id="title">AI Preferences Signaling: End User Impact</h1>
+<section id="section-abstract">
+      <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
+<p id="section-abstract-1">Standards can have a major impact on end users across technological, legal, ethical, and governance dimensions, largely centering around access to information, control over their digital contributions, and data privacy. The purpose of this Internet Draft is to document the potential impact of signaling AI preferences on end users other than publishers, and to suggest some principles for the ai-pref working group to consider when assessing proposed vocabulary and definitions IETF wishes to standardize for signaling.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+</section>
+<section class="note rfcEditorRemove" id="section-note.1">
+      <h2 id="name-about-this-document">
+<a href="#name-about-this-document" class="section-name selfRef">About This Document</a>
+      </h2>
+<p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
+<p id="section-note.1-2">
+        The latest revision of this draft can be found at <span><a href="https://Farzaneh-Unicode.github.io/enduser-AIpref/draft-farzdusa-aipref-enduser.html">https://Farzaneh-Unicode.github.io/enduser-AIpref/draft-farzdusa-aipref-enduser.html</a></span>.
+        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-farzdusa-aipref-enduser/">https://datatracker.ietf.org/doc/draft-farzdusa-aipref-enduser/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+<p id="section-note.1-3">Source for this draft and an issue tracker can be found at
+        <span><a href="https://github.com/Farzaneh-Unicode/enduser-AIpref">https://github.com/Farzaneh-Unicode/enduser-AIpref</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
+</section>
+<div id="status-of-memo">
+<section id="section-boilerplate.1">
+        <h2 id="name-status-of-this-memo">
+<a href="#name-status-of-this-memo" class="section-name selfRef">Status of This Memo</a>
+        </h2>
+<p id="section-boilerplate.1-1">
+        This Internet-Draft is submitted in full conformance with the
+        provisions of BCP 78 and BCP 79.<a href="#section-boilerplate.1-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-2">
+        Internet-Drafts are working documents of the Internet Engineering Task
+        Force (IETF). Note that other groups may also distribute working
+        documents as Internet-Drafts. The list of current Internet-Drafts is
+        at <span><a href="https://datatracker.ietf.org/drafts/current/">https://datatracker.ietf.org/drafts/current/</a></span>.<a href="#section-boilerplate.1-2" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-3">
+        Internet-Drafts are draft documents valid for a maximum of six months
+        and may be updated, replaced, or obsoleted by other documents at any
+        time. It is inappropriate to use Internet-Drafts as reference
+        material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.1-4">
+        This Internet-Draft will expire on 30 May 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="copyright">
+<section id="section-boilerplate.2">
+        <h2 id="name-copyright-notice">
+<a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
+        </h2>
+<p id="section-boilerplate.2-1">
+            Copyright (c) 2025 IETF Trust and the persons identified as the
+            document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
+<p id="section-boilerplate.2-2">
+            This document is subject to BCP 78 and the IETF Trust's Legal
+            Provisions Relating to IETF Documents
+            (<span><a href="https://trustee.ietf.org/license-info">https://trustee.ietf.org/license-info</a></span>) in effect on the date of
+            publication of this document. Please review these documents
+            carefully, as they describe your rights and restrictions with
+            respect to this document.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="toc">
+<section id="section-toc.1">
+        <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
+<a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
+        </h2>
+<nav class="toc"><ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
+            <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
+            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-who-are-the-end-users" class="internal xref">Who are the end users?</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
+            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-the-ietfs-mandate-and-the-a" class="internal xref">The IETF’s mandate and the Approach to Signaling AI Preferences</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-the-right-to-access-knowled" class="internal xref">The Right to Access Knowledge and Avoiding Internet Fragmentation</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-access-to-information" class="internal xref">Access to Information</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-intellectual-property-overr" class="internal xref">Intellectual Property Overreach and Rights Delay</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-risk-of-web-fragmentation" class="internal xref">Risk of Web Fragmentation</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.4">
+                <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="auto internal xref">4.4</a>.  <a href="#name-impact-on-ai-tool-utility" class="internal xref">Impact on AI Tool Utility</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5">
+                <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="auto internal xref">4.5</a>.  <a href="#name-site-operators-dont-own-eve" class="internal xref">Site operators don’t own everything on their website</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-impact-on-user-rights-trans" class="internal xref">Impact on User Rights, Transformation, and Academic Research</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
+                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-robots-rights-to-read" class="internal xref">Robots Rights to Read</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
+                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-use-in-the-public-interest" class="internal xref">Use in the public interest</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-shortcomings-of-restricting" class="internal xref">Shortcomings of Restricting RAG and Inference</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-collateral-damage-to-end-us" class="internal xref">Collateral Damage to End Users and Beneficial Applications</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-risk-to-automated-tools-and" class="internal xref">Risk to Automated Tools and Access to Knowledge (A2K)</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
+                <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-discouraging-personal-use-o" class="internal xref">Discouraging Personal Use of Automation</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
+                <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <a href="#name-accessibility-concerns" class="internal xref">Accessibility Concerns</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5">
+                <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="auto internal xref">6.5</a>.  <a href="#name-impact-on-research-and-flex" class="internal xref">Impact on Research and Flexibility</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-technical-and-definitional-" class="internal xref">Technical and Definitional Instability</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-the-crawl-time-vs-inference" class="internal xref">The Crawl Time vs. Inference</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-difficulty-in-allowing-non-" class="internal xref">Difficulty in Allowing Non-Commercial and Excluding Commercial Crawling</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
+                <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="auto internal xref">7.3</a>.  <a href="#name-uncertainty-in-definition" class="internal xref">Uncertainty in Definition</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.4">
+                <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="auto internal xref">7.4</a>.  <a href="#name-asset-level-signaling" class="internal xref">Asset level signaling</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-case-studies" class="internal xref">Case Studies</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-inhibition-of-not-for-profi" class="internal xref">Inhibition of Not-for-Profit Crawlers</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-opaque-robot-defenses" class="internal xref">Opaque Robot Defenses</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.3">
+                <p id="section-toc.1-1.8.2.3.1"><a href="#section-8.3" class="auto internal xref">8.3</a>.  <a href="#name-collateral-damage-to-benefi" class="internal xref">Collateral Damage to Beneficial Uses</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.4">
+                <p id="section-toc.1-1.8.2.4.1"><a href="#section-8.4" class="auto internal xref">8.4</a>.  <a href="#name-threat-to-public-archiving" class="internal xref">Threat to Public Archiving</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.5">
+                <p id="section-toc.1-1.8.2.5.1"><a href="#section-8.5" class="auto internal xref">8.5</a>.  <a href="#name-intermediaries-choosing-for" class="internal xref">Intermediaries Choosing for Smaller Site Operators</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.6">
+                <p id="section-toc.1-1.8.2.6.1"><a href="#section-8.6" class="auto internal xref">8.6</a>.  <a href="#name-platform-control-over-creat" class="internal xref">Platform Control over Creator Intent</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.7">
+                <p id="section-toc.1-1.8.2.7.1"><a href="#section-8.7" class="auto internal xref">8.7</a>.  <a href="#name-creation-of-quasi-ip-rights" class="internal xref">Creation of Quasi-IP Rights</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.8">
+                <p id="section-toc.1-1.8.2.8.1"><a href="#section-8.8" class="auto internal xref">8.8</a>.  <a href="#name-the-threat-of-exclusionary-" class="internal xref">The Threat of Exclusionary Defaults</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-the-impact-on-the-internet" class="internal xref">The Impact on the Internet</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-proposed-end-user-impact-pr" class="internal xref">Proposed End User Impact Principles</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-conclusion" class="internal xref">Conclusion</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+            <p id="section-toc.1-1.13.1"><a href="#section-13" class="auto internal xref">13</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+            <p id="section-toc.1-1.14.1"><a href="#section-14" class="auto internal xref">14</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
+            <p id="section-toc.1-1.15.1"><a href="#section-15" class="auto internal xref">15</a>. <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
+            <p id="section-toc.1-1.16.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17">
+            <p id="section-toc.1-1.17.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+</li>
+        </ul>
+</nav>
+</section>
+</div>
+<div id="introduction">
+<section id="section-1">
+      <h2 id="name-introduction">
+<a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
+      </h2>
+<p id="section-1-1">As AI systems start becoming a primary way people access and interact with information online, mechanisms for signaling AI preferences risk shaping far more than technical coordination. While the AI-Pref Working Group focuses on enabling content hosts to express their preferences, these signals operate at the protocol layer, where they can quietly restrict access, chill lawful uses, and unintentionally fragment the open web. End users, understood broadly in RFC 8890 as the human beings whose activities Internet standards support, include not only publishers and AI developers but also researchers, educators, people with disabilities, small creators, and the global public. Many of these communities rely on rights to access, transform, and analyze information that could be undermined if preference signaling is interpreted or implemented as a form of control. This draft outlines the potential impact of AI signaling on end users and proposes principles to ensure that standardization preserves interoperability, openness, and user agency.<a href="#section-1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="who-are-the-end-users">
+<section id="section-2">
+      <h2 id="name-who-are-the-end-users">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-who-are-the-end-users" class="section-name selfRef">Who are the end users?</a>
+      </h2>
+<p id="section-2-1">Mark Nottingham the author of  The Internet is for the End Users, proposes a definition for end users in RFC 8890: "end users" means human users whose activities IETF standards support, sometimes indirectly….End users are not necessarily a homogenous group; they might have different views of how the Internet should work and might occupy several roles, such as a seller, buyer, publisher, reader, service provider, and consumer. An end user might browse the Web, monitor remote equipment, play a game, videoconference with colleagues, send messages to friends, or perform an operation in a remote surgery theater. They might be "at the keyboard" or represented by software indirectly (e.g., as a daemon)".<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2">This broad definition is especially useful to keep in mind as the outputs from the AI preferences working group are likely to have an impact on a broad range of end users. The dominant voices in the AI-pref working group so far have been “publishers” and AI developers, each of which are a kind of end user. Other end users’ rights, interests,  and access have been discussed less frequently. When rights and interests are discussed,  in general the rights under consideration are those of Intellectual Property Rightsholders, while the discussions rarely mention other rightsholders, such as people with rights to access to knowledge and essential services, or interested parties.<a href="#section-2-2" class="pilcrow">¶</a></p>
+<p id="section-2-3">There is a need to ensure that property and economic interests are aligned with fundamental human rights, such as the right to freedom of opinion and expression under Article 19 of the Universal Declaration of Human Rights. Intellectual-property and market-based mechanisms should function in a way that supports, rather than constrains, the free circulation of information and ideas.<a href="#section-2-3" class="pilcrow">¶</a></p>
+<p id="section-2-4">While AI Preference signaling mechanisms are intended to give content hosts (or site operators) a means to signal how content is used by AI systems, they can result in unintended consequences that disproportionately harm end users, including researchers, people with disabilities, and commercial and non-commercial actors, thereby undermining the open Internet. Site operators may signal restrictions over content or uses that they do not have the legal right to control, such as text and data mining permitted under copyright exceptions, accessibility tools, public-domain materials, or facts and information not protected by intellectual property rights. When interpreted strictly by AI systems, such signals can create a chilling effect: researchers, accessibility developers, and others may refrain from lawful uses simply because they believe the content is off-limits. This misalignment between technical signals and actual rights risks fragmenting access to knowledge and undermining the open Internet.<a href="#section-2-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="the-ietfs-mandate-and-the-approach-to-signaling-ai-preferences">
+<section id="section-3">
+      <h2 id="name-the-ietfs-mandate-and-the-a">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-the-ietfs-mandate-and-the-a" class="section-name selfRef">The IETF’s mandate and the Approach to Signaling AI Preferences</a>
+      </h2>
+<p id="section-3-1">The IETF was never intended to serve as a forum for protecting business models from technological innovation or enforcing copyright regimes. Its purpose is to maintain and advance the interoperability of the Internet, to ensure that diverse systems, services, and users can communicate seamlessly across technical and institutional boundaries. A shift away from this focus risks turning what should be a technical coordination effort into a venue for regulating reuse at the protocol layer, well before any legal reasoning or due-process safeguards can apply. If the IETF shifts toward a regime that encourages blanket prohibitions on data processing, regardless of context, consequence, or user benefit, we risk hardcoding a “chilling effect” into the infrastructure of the web itself. And unlike lawful reuses, which are typically adjudicated through downstream legal reasoning, signaling operates at the technical layer, where denial is fast, quiet, and hard to contest.<a href="#section-3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="the-right-to-access-knowledge-and-avoiding-internet-fragmentation">
+<section id="section-4">
+      <h2 id="name-the-right-to-access-knowled">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-the-right-to-access-knowled" class="section-name selfRef">The Right to Access Knowledge and Avoiding Internet Fragmentation</a>
+      </h2>
+<p id="section-4-1">A major concern for end users is the potential restriction of access to information and essential services due to overly restrictive content signaling instituted by hosting platforms, creators and publishers.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<div id="access-to-information">
+<section id="section-4.1">
+        <h3 id="name-access-to-information">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-access-to-information" class="section-name selfRef">Access to Information</a>
+        </h3>
+<p id="section-4.1-1">People globally are increasingly accessing essential services and knowledge through the Internet. AI-enabled applications could potentially simplify access to knowledge and essential services provided online, such as healthcare and other services. However, if signaling AI preferences reinforced by regulatory reference become too restrictive, it can have a chilling effect and the fundamental right to access information and essential services could be harmed.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="intellectual-property-overreach-and-rights-delay">
+<section id="section-4.2">
+        <h3 id="name-intellectual-property-overr">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-intellectual-property-overr" class="section-name selfRef">Intellectual Property Overreach and Rights Delay</a>
+        </h3>
+<p id="section-4.2-1">Theorists of the Access to Knowledge (A2K) movement contend that current levels of Intellectual Property (IP) protection may be unbalanced regarding the right to access. They argue that material interests are not simply equivalent to current IP provisions, and that "rights delayed are rights denied".  (Lea Shaver The Right to Science and Culture, 2010 Wis. L. Rev. 121 (2010).<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="risk-of-web-fragmentation">
+<section id="section-4.3">
+        <h3 id="name-risk-of-web-fragmentation">
+<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-risk-of-web-fragmentation" class="section-name selfRef">Risk of Web Fragmentation</a>
+        </h3>
+<p id="section-4.3-1">There is a tension between giving site operators and declarants (those who declare their preferences about AI data usage) granular control over content and maintaining an open Internet. Implementing very restrictive mechanisms risks "building fortress walls around content" and sacrificing the open web, potentially throttling the future of knowledge and access to essential services.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="impact-on-ai-tool-utility">
+<section id="section-4.4">
+        <h3 id="name-impact-on-ai-tool-utility">
+<a href="#section-4.4" class="section-number selfRef">4.4. </a><a href="#name-impact-on-ai-tool-utility" class="section-name selfRef">Impact on AI Tool Utility</a>
+        </h3>
+<p id="section-4.4-1">While large AI companies are the primary targets of restrictive preference signals, these controls can inadvertently restrict and harm end users who wish to use AI tools for common tasks like exploring content, summarizing, or translating documents or making services more accessible. Setting a high bar for accessing and using information could negatively affect individual end users' ability to utilize these tools and overall experience when accessing the world wide web. Ultimately, it is individual people who will pay the price for restricted access to AI tools, both financially and by IETF-endorsed limits on their ability to use AI to access the knowledge and information they seek. Open source AI developers and others can also be disenfranchised if the preferences signals are not coherently implementable or if they have chilling effects.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="site-operators-dont-own-everything-on-their-website">
+<section id="section-4.5">
+        <h3 id="name-site-operators-dont-own-eve">
+<a href="#section-4.5" class="section-number selfRef">4.5. </a><a href="#name-site-operators-dont-own-eve" class="section-name selfRef">Site operators don’t own everything on their website</a>
+        </h3>
+<p id="section-4.5-1">Any given web page has the technical capacity to contain content from a variety of different rightsholders. A large platform can therefore contain content from millions, even billions, of different content creators. Giving a website owner the ability to determine the AI preferences for potentially millions of different creators and their works risks centralizing a huge amount of control.<a href="#section-4.5-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="impact-on-user-rights-transformation-and-academic-research">
+<section id="section-5">
+      <h2 id="name-impact-on-user-rights-trans">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-impact-on-user-rights-trans" class="section-name selfRef">Impact on User Rights, Transformation, and Academic Research</a>
+      </h2>
+<p id="section-5-1">End users who are researchers are frequently hindered by licensing and contractual barriers, even when the underlying uses might be legally permissible under copyright law.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<div id="robots-rights-to-read">
+<section id="section-5.1">
+        <h3 id="name-robots-rights-to-read">
+<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-robots-rights-to-read" class="section-name selfRef">Robots Rights to Read</a>
+        </h3>
+<p id="section-5.1-1">Researchers and other end users face a tension when downloading and human (consumptive) reading is allowed, but machine (non-consumptive) reading is disallowed, leading to the slogan “let the robots read.” Robots are perhaps always the agents of human users and preventing them from reading could ultimately prevent the humans from access.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="use-in-the-public-interest">
+<section id="section-5.2">
+        <h3 id="name-use-in-the-public-interest">
+<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-use-in-the-public-interest" class="section-name selfRef">Use in the public interest</a>
+        </h3>
+<p id="section-5.2-1">The principle of allowing public interest uses of information has long supported knowledge production and freedom of expression. These uses are without payment nor permission, rejecting the idea that access to information is "a privilege reserved for the well-behaved". In the AI-Pref discussions, many participants expressed a desire to differentiate between traditional search engine indexing—generally accepted as beneficial to the open web—and newer AI-enabled summarization or answer generation. Some content providers signaled that they may be open to appearing in classic search results but not in AI-driven outputs that repackage or synthesize their material. However, this signaling raises a deeper structural issue: by opting out, publishers and intellectual property rights holders and hosts effectively shift the burden of determining whether a use is permitted to the recipient of the signal. While this may not be a significant obstacle for well-resourced actors like major platforms, it imposes disproportionate risks on small operators, open-source AI developers, and actors from the global majority, those who often lack the legal infrastructure, funding, or access to navigate complex copyright frameworks.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="shortcomings-of-restricting-rag-and-inference">
+<section id="section-6">
+      <h2 id="name-shortcomings-of-restricting">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-shortcomings-of-restricting" class="section-name selfRef">Shortcomings of Restricting RAG and Inference</a>
+      </h2>
+<p id="section-6-1">Restricting RAG and inference, uses that occur after the foundation model has been trained, is fundamentally challenging due to the fluid nature of these processes and the risk of unintended negative consequences for legitimate users and access to information.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<div id="collateral-damage-to-end-users-and-beneficial-applications">
+<section id="section-6.1">
+        <h3 id="name-collateral-damage-to-end-us">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-collateral-damage-to-end-us" class="section-name selfRef">Collateral Damage to End Users and Beneficial Applications</a>
+        </h3>
+<p id="section-6.1-1">One of the most significant shortcoming of restricting inference is the unintended curtailment of beneficial applications used everyday.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="risk-to-automated-tools-and-access-to-knowledge-a2k">
+<section id="section-6.2">
+        <h3 id="name-risk-to-automated-tools-and">
+<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-risk-to-automated-tools-and" class="section-name selfRef">Risk to Automated Tools and Access to Knowledge (A2K)</a>
+        </h3>
+<p id="section-6.2-1">If restrictions on inference are applied too broadly, end users who wish to use AI tools for common tasks like discovering content, summarizing documents, or translation would be barred from doing so. This directly undermines the end user's right to access knowledge (A2K).<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="discouraging-personal-use-of-automation">
+<section id="section-6.3">
+        <h3 id="name-discouraging-personal-use-o">
+<a href="#section-6.3" class="section-number selfRef">6.3. </a><a href="#name-discouraging-personal-use-o" class="section-name selfRef">Discouraging Personal Use of Automation</a>
+        </h3>
+<p id="section-6.3-1">End users want to benefit from the efficiencies of automation, such as using bulk operations and automated search features, rather than having to rely solely on large, proprietary AI company tools. Placing the same restrictive bar on individual end users as on large AI developers for using information could negatively affect the ability of individuals to leverage these tools for personal or beneficial research purposes.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="accessibility-concerns">
+<section id="section-6.4">
+        <h3 id="name-accessibility-concerns">
+<a href="#section-6.4" class="section-number selfRef">6.4. </a><a href="#name-accessibility-concerns" class="section-name selfRef">Accessibility Concerns</a>
+        </h3>
+<p id="section-6.4-1">Overly restrictive inference controls, such as a complete opt-out of “all data mining, automation and processing”, carry the risk of affecting uses like spam filtering, harmful language detection, and accessibility tools. For instance, if a tool that describes a website to a visually impaired user relies on inference, a broad restriction could prevent that legitimate use.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="impact-on-research-and-flexibility">
+<section id="section-6.5">
+        <h3 id="name-impact-on-research-and-flex">
+<a href="#section-6.5" class="section-number selfRef">6.5. </a><a href="#name-impact-on-research-and-flex" class="section-name selfRef">Impact on Research and Flexibility</a>
+        </h3>
+<p id="section-6.5-1">Researchers, when analyzing data, may be hindered if limitations block non-consumptive reading (TDM) but allow human reading. The core issue remains that an overly restrictive environment risks constraining scholarship and academic communication.<a href="#section-6.5-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="technical-and-definitional-instability">
+<section id="section-7">
+      <h2 id="name-technical-and-definitional-">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-technical-and-definitional-" class="section-name selfRef">Technical and Definitional Instability</a>
+      </h2>
+<p id="section-7-1">The attempt to restrict RAG/Inference runs into technical limitations regarding scope, authority, and implementation methods.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<div id="the-crawl-time-vs-inference">
+<section id="section-7.1">
+        <h3 id="name-the-crawl-time-vs-inference">
+<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-the-crawl-time-vs-inference" class="section-name selfRef">The Crawl Time vs. Inference</a>
+        </h3>
+<p id="section-7.1-1">Preference signals (like those in robots.txt  or metadata) are available at crawl time, but they are often disassociated from the model when the content is actually used at inference time. This could create mixed signals as to what the end user can do regarding the crawling vs inference and signaling about inference because of this time lag can create many problems for the end users, real time translation for example might not happen.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="difficulty-in-allowing-non-commercial-and-excluding-commercial-crawling">
+<section id="section-7.2">
+        <h3 id="name-difficulty-in-allowing-non-">
+<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-difficulty-in-allowing-non-" class="section-name selfRef">Difficulty in Allowing Non-Commercial and Excluding Commercial Crawling</a>
+        </h3>
+<p id="section-7.2-1">For a general-purpose foundational model (LLM), it is technically difficult to distinguish between commercial and non-commercial uses at either crawl or inference time. Because models cannot selectively isolate or invoke portions of their training data based on the eventual use context, a blanket “No AI” or similar restrictive signal tends to apply universally — even to lawful, commercial and non-commercial, or public-interest uses. This leaves developers and researchers with “unappealing choices,” such as omitting the data entirely or creating separate models for every potential use category, both of which are impractical and risk excluding socially beneficial applications.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="uncertainty-in-definition">
+<section id="section-7.3">
+        <h3 id="name-uncertainty-in-definition">
+<a href="#section-7.3" class="section-number selfRef">7.3. </a><a href="#name-uncertainty-in-definition" class="section-name selfRef">Uncertainty in Definition</a>
+        </h3>
+<p id="section-7.3-1">RAG is only one technique, and definitions of inference-time use are unstable. The concept of "inference" is broad and covers a massive, conceptually fuzzy range of uses of material after training, making it difficult to develop a robust vocabulary term. If standards focus too much on a specific technique like RAG, they risk becoming irrelevant as new techniques emerge.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="asset-level-signaling">
+<section id="section-7.4">
+        <h3 id="name-asset-level-signaling">
+<a href="#section-7.4" class="section-number selfRef">7.4. </a><a href="#name-asset-level-signaling" class="section-name selfRef">Asset level signaling</a>
+        </h3>
+<p id="section-7.4-1">Inference is becoming increasingly local (e.g., self-hosted models or on-device processing). Asset-level control or signaling could intervene with an individual’s device,  and there might be attempts to ensure a user cannot override a "no inference" flag for personal use (like translating a document), which is highly problematic.<a href="#section-7.4-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="case-studies">
+<section id="section-8">
+      <h2 id="name-case-studies">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-case-studies" class="section-name selfRef">Case Studies</a>
+      </h2>
+<div id="inhibition-of-not-for-profit-crawlers">
+<section id="section-8.1">
+        <h3 id="name-inhibition-of-not-for-profi">
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-inhibition-of-not-for-profi" class="section-name selfRef">Inhibition of Not-for-Profit Crawlers</a>
+        </h3>
+<p id="section-8.1-1">Non-profit organizations dedicated to archiving and public benefit, such as the Common Crawl Foundation, the Internet Archive and Data Rescue Project, are often inadvertently blocked or disadvantaged by broad control mechanisms intended to stop commercial scraping.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="opaque-robot-defenses">
+<section id="section-8.2">
+        <h3 id="name-opaque-robot-defenses">
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-opaque-robot-defenses" class="section-name selfRef">Opaque Robot Defenses</a>
+        </h3>
+<p id="section-8.2-1">Modern “robot defenses” are increasingly used by websites to stop crawling instead of relying solely on the transparent robots.txt protocol. Providers of these defenses sometimes treat legitimate archive crawlers, like Common Crawl’s CCBot, the same way as commercial bots crawling for specific AI companies. This blocking process is considered opaque.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="collateral-damage-to-beneficial-uses">
+<section id="section-8.3">
+        <h3 id="name-collateral-damage-to-benefi">
+<a href="#section-8.3" class="section-number selfRef">8.3. </a><a href="#name-collateral-damage-to-benefi" class="section-name selfRef">Collateral Damage to Beneficial Uses</a>
+        </h3>
+<p id="section-8.3-1">This conflation of uses often leads to "collateral damage" for non-AI uses, effectively "locking down the Web". For example, the official 2024 End of Term Archive has been inadvertently blocked from crawling some US government websites due to these defensive measures.<a href="#section-8.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="threat-to-public-archiving">
+<section id="section-8.4">
+        <h3 id="name-threat-to-public-archiving">
+<a href="#section-8.4" class="section-number selfRef">8.4. </a><a href="#name-threat-to-public-archiving" class="section-name selfRef">Threat to Public Archiving</a>
+        </h3>
+<p id="section-8.4-1">Organizations providing vital public benefit, such as the Internet Archive's Wayback Machine, are constantly under threat because courts sometimes impose a duty to parse individualized, idiosyncratic Terms of Service (ToS) for every archived page. Such enforcement would make the vital historical, academic, legal, and journalistic work provided by the Wayback Machine impossible.<a href="#section-8.4-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="intermediaries-choosing-for-smaller-site-operators">
+<section id="section-8.5">
+        <h3 id="name-intermediaries-choosing-for">
+<a href="#section-8.5" class="section-number selfRef">8.5. </a><a href="#name-intermediaries-choosing-for" class="section-name selfRef">Intermediaries Choosing for Smaller Site Operators</a>
+        </h3>
+<p id="section-8.5-1">A significant problem arising from this overreach is that creators and smaller site operators who wish to share their content for uses like AI training, or search indexing are often prevented from doing so because the hosting platform or site administrator chooses a restrictive standard for them by default.<a href="#section-8.5-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="platform-control-over-creator-intent">
+<section id="section-8.6">
+        <h3 id="name-platform-control-over-creat">
+<a href="#section-8.6" class="section-number selfRef">8.6. </a><a href="#name-platform-control-over-creat" class="section-name selfRef">Platform Control over Creator Intent</a>
+        </h3>
+<p id="section-8.6-1">Public websites, particularly those hosting user-generated content (UGC) like social media platforms, use broad Terms of Service (ToS) to assert extensive, contract-based control over content and data. If a site has content from many creators (e.g., social media platforms), the site administrator typically controls the location-based opt-out mechanisms (like robots.txt). Consequently, the administrator "may not allow them [individual creators] to express their preferences fully, or at all".<a href="#section-8.6-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="creation-of-quasi-ip-rights">
+<section id="section-8.7">
+        <h3 id="name-creation-of-quasi-ip-rights">
+<a href="#section-8.7" class="section-number selfRef">8.7. </a><a href="#name-creation-of-quasi-ip-rights" class="section-name selfRef">Creation of Quasi-IP Rights</a>
+        </h3>
+<p id="section-8.7-1">Platforms use their ToS to create quasi-intellectual property rights intended to bind the public and impose constraints that stifle academic research and preservation, even over content they do not own the copyright to.<a href="#section-8.7-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="the-threat-of-exclusionary-defaults">
+<section id="section-8.8">
+        <h3 id="name-the-threat-of-exclusionary-">
+<a href="#section-8.8" class="section-number selfRef">8.8. </a><a href="#name-the-threat-of-exclusionary-" class="section-name selfRef">The Threat of Exclusionary Defaults</a>
+        </h3>
+<p id="section-8.8-1">When platforms implement restrictive measures (even if intended to be protective), they lock away valuable resources that could otherwise help the open web. For instance, a valuable public-interest resource, such as a digital dictionary, could be blocked from all AI systems by the organizations hosting it, resulting in the resource being inaccessible to speakers, researchers, and language models that could otherwise preserve and revitalize the language.<a href="#section-8.8-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="the-impact-on-the-internet">
+<section id="section-9">
+      <h2 id="name-the-impact-on-the-internet">
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-the-impact-on-the-internet" class="section-name selfRef">The Impact on the Internet</a>
+      </h2>
+<p id="section-9-1">Using Internet Society Internet Impact Assessment tool, we have done a brief Internet impact assessment on several concepts we have been discussing during the working group dialogues:<a href="#section-9-1" class="pilcrow">¶</a></p>
+<table class="center" id="table-1">
+        <caption><a href="#table-1" class="selfRef">Table 1</a></caption>
+<thead>
+          <tr>
+            <th class="text-left" rowspan="1" colspan="1">Critical Property / Goal</th>
+            <th class="text-left" rowspan="1" colspan="1">Potential Impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">
+              <strong>CP1 – Accessible infrastructure</strong>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">All-or-nothing AI-pref signals increase participation costs, especially for small/open-source actors.</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">
+              <strong>CP2 – Interoperable building blocks</strong>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">Broad bans reduce modular reuse (e.g., summarization/translation), stifling recombination.</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">
+              <strong>CP3 – Decentralized management</strong>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">Platform-wide defaults override creator intent; reduce autonomy in UGC contexts.</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">
+              <strong>CP4 – Common global identifiers</strong>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">No impact identified yet.</td>
+          </tr>
+          <tr>
+            <td class="text-left" rowspan="1" colspan="1">
+              <strong>CP5 – Technology-neutral network</strong>
+</td>
+            <td class="text-left" rowspan="1" colspan="1">Banning “AI” as a category risks chilling general-purpose uses (e.g., accessibility).</td>
+          </tr>
+        </tbody>
+      </table>
+</section>
+</div>
+<div id="proposed-end-user-impact-principles">
+<section id="section-10">
+      <h2 id="name-proposed-end-user-impact-pr">
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-proposed-end-user-impact-pr" class="section-name selfRef">Proposed End User Impact Principles</a>
+      </h2>
+<p id="section-10-1">To the greatest extent possible, the goal should be to keep public information public and to keep the open web open.
+Vocabulary standardized by IETF should not unduly restrict end user access to and ability to use public knowledge and information.
+Definitions should be clear and narrowly tailored to be fit for purpose, rather than vague and broad.
+End users should be able to understand the definitions without having technical or legal expertise.
+End users should be able to use general purpose, commercially available tools to accomplish their own lawful activities, regardless of preferences to the contrary.<a href="#section-10-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="conclusion">
+<section id="section-11">
+      <h2 id="name-conclusion">
+<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-conclusion" class="section-name selfRef">Conclusion</a>
+      </h2>
+<p id="section-11-1">AI Preference signaling, while conceived as a mechanism for expressing control and transparency over the use of online content, risks evolving into an instrument that fragments the open Internet and uses of information. The IETF’s role has never been to protect business models from innovation or to enforce intellectual property regimes. Its role is  to ensure interoperability and resilience across technical systems. When preference signaling becomes a vehicle for implementing legal or economic restrictions at the protocol layer, it moves the IETF into a domain of governance that undermines its core mission and values.<a href="#section-11-1" class="pilcrow">¶</a></p>
+<p id="section-11-2">End users, whether researchers, accessibility developers, educators, or ordinary participants in the digital commons, stand to lose most from these shifts. Overly restrictive signaling can chill legitimate research, disable accessibility tools, and entrench barriers to knowledge that the Internet was designed to dismantle. By conflating technical coordination with policy enforcement, we risk replacing openness and innovation with exclusion and opacity.<a href="#section-11-2" class="pilcrow">¶</a></p>
+<p id="section-11-3">The AI-Pref Working Group should therefore focus on preserving interoperability and user agency, ensuring that standards remain technology-neutral, modular, and open to innovation.<a href="#section-11-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="conventions-and-definitions">
+<section id="section-12">
+      <h2 id="name-conventions-and-definitions">
+<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-conventions-and-definitions" class="section-name selfRef">Conventions and Definitions</a>
+      </h2>
+<p id="section-12-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
+"<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
+described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="cite xref">RFC8174</a>]</span> when, and only when, they
+appear in all capitals, as shown here.<a href="#section-12-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-13">
+      <h2 id="name-security-considerations">
+<a href="#section-13" class="section-number selfRef">13. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-13-1">TODO Security<a href="#section-13-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="iana-considerations">
+<section id="section-14">
+      <h2 id="name-iana-considerations">
+<a href="#section-14" class="section-number selfRef">14. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+      </h2>
+<p id="section-14-1">This document has no IANA actions.<a href="#section-14-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="sec-normative-references">
+<section id="section-15">
+      <h2 id="name-normative-references">
+<a href="#section-15" class="section-number selfRef">15. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+      </h2>
+<dl class="references">
+<dt id="RFC2119">[RFC2119]</dt>
+      <dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8174">[RFC8174]</dt>
+    <dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</div>
+<div id="acknowledgments">
+<section id="appendix-A">
+      <h2 id="name-acknowledgments">
+<a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
+      </h2>
+<p id="appendix-A-1">TODO acknowledge.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="authors-addresses">
+<section id="appendix-B">
+      <h2 id="name-authors-addresses">
+<a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
+      </h2>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Farzaneh Badii</span></div>
+<div dir="auto" class="left"><span class="org">Digital Medusa</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:farzaneh@digitalmedusa.org" class="email">farzaneh@digitalmedusa.org</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Lila Bailey</span></div>
+<div dir="auto" class="left"><span class="org">Internet Archive</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:lila@archive.org" class="email">lila@archive.org</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Jo Levy</span></div>
+</address>
+</section>
+</div>
+<script>const toc = document.getElementById("toc");
+toc.querySelector("h2").addEventListener("click", e => {
+  toc.classList.toggle("active");
+});
+toc.querySelector("nav").addEventListener("click", e => {
+  toc.classList.remove("active");
+});
+</script>
+</body>
+</html>
