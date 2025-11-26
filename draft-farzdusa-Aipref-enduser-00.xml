@@ -13,14 +13,14 @@
     <seriesInfo name="Internet-Draft" value="draft-farzdusa-aipref-enduser-00"/>
     <author initials="F." surname="Badii" fullname="Farzaneh Badii">
       <organization>Digital Medusa</organization>
-      <address/>
+      <farzaneh@digitalmedusa.org/>
     </author>
     <author initials="L." surname="Bailey" fullname="Lila Bailey">
       <organization>Internet Archive</organization>
-      <address/>
+      <lila@archive.org/>
     </author>
     <author initials="J." surname="Levy" fullname="Jo Levy">
-      <address/>
+      <jlevy@nortonlaw.com/>
     </author>
     <date year="2025" month="November" day="26"/>
     <workgroup>AIPref</workgroup>
