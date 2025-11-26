@@ -1,23 +1,19 @@
 ---
 title: "AI Preferences Signaling: End User Impact"
 abbrev: "Impact on End Users"
-category: info
-
 docname: draft-farzdusa-Aipref-enduser-latest
-submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
+category: info
+ipr: trust200902
+area: ART
+workgroup: AI-Pref
+submissiontype: independent
 number:
 date:
-consensus: true
+consensus: false
 v: 3
-# area: WIT
-# workgroup: aipref
-keyword:
+keyword: []
 
 venue:
-#  group: WG
-#  type: Working Group
-#  mail: WG@example.com
-#  arch: https://example.com/WG
   github: "Farzaneh-Unicode/enduser-AIpref"
   latest: "https://Farzaneh-Unicode.github.io/enduser-AIpref/draft-farzdusa-Aipref-enduser.html"
 
@@ -30,7 +26,7 @@ author:
     organization: "Internet Archive"
     email: "lila@archive.org"
 
-  - fullname: "Joe Levy"
+  - fullname: "Jo Levy"
     organization: ""
     email: ""
 
@@ -41,13 +37,18 @@ informative: []
 
 Standards can have a major impact on end users across technological, legal, ethical, and governance dimensions, largely centering around access to information, control over their digital contributions, and data privacy. The purpose of this Internet Draft is to document the potential impact of signaling AI preferences on end users other than publishers, and to suggest some principles for the ai-pref working group to consider when assessing proposed vocabulary and definitions IETF wishes to standardize for signaling. 
 
+---
+# Abstract
+
+Standards can have a major impact on end users across technological, legal, ethical, and governance dimensions, largely centering around access to information, control over their digital contributions, and data privacy. The purpose of this Internet Draft is to document the potential impact of signaling AI preferences on end users other than publishers, and to suggest some principles for the ai-pref working group to consider when assessing proposed vocabulary and definitions IETF wishes to standardize for signaling.
+
 # Introduction
 
 As AI systems start becoming a primary way people access and interact with information online, mechanisms for signaling AI preferences risk shaping far more than technical coordination. While the AI-Pref Working Group focuses on enabling content hosts to express their preferences, these signals operate at the protocol layer, where they can quietly restrict access, chill lawful uses, and unintentionally fragment the open web. End users, understood broadly in RFC 8890 as the human beings whose activities Internet standards support, include not only publishers and AI developers but also researchers, educators, people with disabilities, small creators, and the global public. Many of these communities rely on rights to access, transform, and analyze information that could be undermined if preference signaling is interpreted or implemented as a form of control. This draft outlines the potential impact of AI signaling on end users and proposes principles to ensure that standardization preserves interoperability, openness, and user agency.
 
 # Who are the end users? 
 Mark Nottingham the author of  The Internet is for the End Users, proposes a definition for end users in RFC 8890: "end users" means human users whose activities IETF standards support, sometimes indirectly….End users are not necessarily a homogenous group; they might have different views of how the Internet should work and might occupy several roles, such as a seller, buyer, publisher, reader, service provider, and consumer. An end user might browse the Web, monitor remote equipment, play a game, videoconference with colleagues, send messages to friends, or perform an operation in a remote surgery theater. They might be "at the keyboard" or represented by software indirectly (e.g., as a daemon).” 
-This broad definition is especially useful to keep in mind as the outputs from the AI preferences working group are likely to have an impact on a broad range of end users. The dominant voices in the AI-pref working group so far have been “publishers” and AI developers, each of which are a kind of end user. Other end users’ rights, interests,  and access have been discussed less frequently. When rights and interests are discussed,  in general the rights under consideration are those of Intellectual Property Rightsholders, while the discussions rarely mention other rightsholders, such as people with rights to access to knowledge and essential services, or interested parties. 
+This broad definition is especially useful to keep in mind as the outputs from the AI preferences working group are likely to have an impact on a broad range of end users. The dominant voices in the AI-pref working group so far have been “publishers” and AI developers, each of which are a kind of end user. Other end users’ rights, interests,  and access have been discussed less frequently. When rights and interests are discussed,  in general the rights under consideration are those of Intellectual Property Rightsholders, while the discussions rarely mention other rightsholders, such as people with rights to access to knowledge and essential services, or interested parties.
 
 There is a need to ensure that property and economic interests are aligned with fundamental human rights, such as the right to freedom of opinion and expression under Article 19 of the Universal Declaration of Human Rights. Intellectual-property and market-based mechanisms should function in a way that supports, rather than constrains, the free circulation of information and ideas.  
 
@@ -115,22 +116,17 @@ Consequently, the administrator "may not allow them [individual creators] to exp
 
 **Creation of Quasi-IP Rights:** Platforms use their ToS to create quasi-intellectual property rights intended to bind the public and impose constraints that stifle academic research and preservation, even over content they do not own the copyright to. 
 
-**The Threat of Exclusionary Defaults:** When platforms implement restrictive measures (even if intended to be protective), they lock away valuable resources that could otherwise help the open web. For instance, a valuable public-interest resource, such as a digital dictionary, could be blocked from all AI systems by the organizations hosting it, resulting in the resource being inaccessible to speakers, researchers, and language models that could otherwise preserve and revitalize the language.
+**The Threat of Exclusionary Defaults:** When platforms implement restrictive measures (even if intended to be protective), they lock away valuable resources that could otherwise help the open web. For instance, a valuable public-interest resource, such as a digital dictionary, could be blocked from all AI systems by the organizations hosting it, resulting in the resource being inaccessible to speakers, researchers, and language models that could otherwise preserve and revitalize the language. 
+**The Impact on the Internet** Using Internet Society Internet Impact Assessment tool, we have done a brief Internet impact assessment on several concepts we have been discussing during the working group dialogues:
 
-The Impact on the Internet Using Internet Society Internet Impact Assessment tool, we have done a brief Internet impact assessment on several concepts we have been discussing during the working group dialogues:
+| Critical Property / Goal        | Potential Impact                                                                                   |
+|---------------------------------|-----------------------------------------------------------------------------------------------------|
+| **CP1 – Accessible infrastructure**      | All-or-nothing AI-pref signals increase participation costs, especially for small/open-source actors. |
+| **CP2 – Interoperable building blocks** | Broad bans reduce modular reuse (e.g., summarization/translation), stifling recombination.         |
+| **CP3 – Decentralized management**       | Platform-wide defaults override creator intent; reduce autonomy in UGC contexts.                    |
+| **CP4 – Common global identifiers**      | No impact identified yet.                                                                           |
+| **CP5 – Technology-neutral network**     | Banning “AI” as a category risks chilling general-purpose uses (e.g., accessibility).               |
 
-Critical Property / Goal
-Potential Impact
-CP1 – Accessible infrastructure
-All-or-nothing AI-pref signals increase participation costs, especially for small/open-source actors.
-CP2 – Interoperable building blocks
-Broad bans reduce modular reuse (e.g. summarization/translation), stifling recombination.
-CP3 – Decentralized management
-Platform-wide defaults override creator intent; reduce autonomy in UGC contexts.
-CP4 – Common global identifiers
-No impact identified yet 
-CP5 – Technology-neutral network
-Banning 'AI' as a category risks chilling general-purpose uses (e.g. accessibility).
 
 
 # Proposed End User Impact Principles
