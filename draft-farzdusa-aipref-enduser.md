@@ -10,7 +10,7 @@ submissiontype: independent
 
 venue:
   github: "Farzaneh-Unicode/enduser-AIpref"
-  latest: "https://Farzaneh-Unicode.github.io/enduser-AIpref/draft-farzdusa-Aipref-enduser.html"
+  latest: "https://Farzaneh-Unicode.github.io/enduser-AIpref/draft-farzdusa-aipref-enduser.html"
 
 author:
   - fullname: "Farzaneh Badii"
