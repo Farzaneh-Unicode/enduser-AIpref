@@ -23,7 +23,6 @@ author:
 
   - fullname: "Jo Levy"
 
-
 --- abstract
 
 Standards can have a major impact on end users across technological, legal, ethical, and governance dimensions, largely centering around access to information, control over their digital contributions, and data privacy. The purpose of this Internet Draft is to document the potential impact of signaling AI preferences on end users other than publishers, and to suggest some principles for the ai-pref working group to consider when assessing proposed vocabulary and definitions IETF wishes to standardize for signaling.
