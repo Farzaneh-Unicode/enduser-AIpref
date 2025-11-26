@@ -1,7 +1,7 @@
 ---
 title: "AI Preferences Signaling: End User Impact"
 abbrev: "Impact on End Users"
-docname: draft-farzdusa-aipref-enduser-00
+docname: draft-farzdusa-aipref-enduser-latest
 category: info
 ipr: trust200902
 area: WIT
