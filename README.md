@@ -4,9 +4,9 @@
 
 This is the working area for the individual Internet-Draft, "Enduser perspective".
 
-* [Editor's Copy](https://Farzaneh-Unicode.github.io/enduser-aipref/#go.draft-farzdusa-AIpref-enduser.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-farzdusa-AIpref-enduser)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-farzdusa-AIpref-enduser)
+* [Editor's Copy](https://Farzaneh-Unicode.github.io/enduser-aipref/#go.draft-farzdusa-aipref-enduser--00.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-farzdusa-aipref-enduser--00)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-farzdusa-aipref-enduser--00)
 * [Compare Editor's Copy to Individual Draft](https://Farzaneh-Unicode.github.io/enduser-aipref/#go.draft-farzdusa-aipref-enduser.diff)
 
 
