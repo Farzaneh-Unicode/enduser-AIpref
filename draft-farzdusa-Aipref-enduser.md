@@ -7,7 +7,6 @@ ipr: trust200902
 area: WIT
 workgroup: AIPref
 submissiontype: independent
-keyword: []
 
 venue:
   github: "Farzaneh-Unicode/enduser-AIpref"
@@ -24,8 +23,6 @@ author:
 
   - fullname: "Jo Levy"
 
-normative: []
-informative: []
 ---
 
 # Abstract
@@ -164,7 +161,7 @@ Platforms use their ToS to create quasi-intellectual property rights intended to
 
 When platforms implement restrictive measures (even if intended to be protective), they lock away valuable resources that could otherwise help the open web. For instance, a valuable public-interest resource, such as a digital dictionary, could be blocked from all AI systems by the organizations hosting it, resulting in the resource being inaccessible to speakers, researchers, and language models that could otherwise preserve and revitalize the language.
 
-# Impact on the Internet
+# The Impact on the Internet
 
 Using Internet Society Internet Impact Assessment tool, we have done a brief Internet impact assessment on several concepts we have been discussing during the working group dialogues:
 
