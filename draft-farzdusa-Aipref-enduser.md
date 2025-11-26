@@ -1,6 +1,6 @@
 ---
-title: "AI Preferences Signaling and the Impact on End Users "
-abbrev: "Enduser perspective"
+title: "AI Preferences Signaling: End User Impact"
+abbrev: "Impact on End Users"
 category: info
 
 docname: draft-farzdusa-Aipref-enduser-latest
@@ -22,29 +22,24 @@ venue:
   latest: "https://Farzaneh-Unicode.github.io/enduser-AIpref/draft-farzdusa-Aipref-enduser.html"
 
 author:
- -
-    fullname: Farzaneh Badii
-    organization: Digital Medusa
-    email: farzaneh@digitalmedusa.org
-      fullname: Lila Bailey
-    organization: Internet Archive
-    email: lila@archive.org
-    fullname: Jo Levy
-   
+  - fullname: "Farzaneh Badii"
+    organization: "Digital Medusa"
+    email: "farzaneh@digitalmedusa.org"
 
-normative:
+  - fullname: "Lila Bailey"
+    organization: "Internet Archive"
+    email: "lila@archive.org"
 
-informative:
+  - fullname: "Joe Levy"
+    organization: ""
+    email: ""
 
-...
-
---- abstract
+normative: []
+informative: []
+---
+# Abstract
 
 Standards can have a major impact on end users across technological, legal, ethical, and governance dimensions, largely centering around access to information, control over their digital contributions, and data privacy. The purpose of this Internet Draft is to document the potential impact of signaling AI preferences on end users other than publishers, and to suggest some principles for the ai-pref working group to consider when assessing proposed vocabulary and definitions IETF wishes to standardize for signaling. 
-
-
-
---- middle
 
 # Introduction
 
