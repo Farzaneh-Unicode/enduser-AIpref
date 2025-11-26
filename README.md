@@ -4,16 +4,16 @@
 
 This is the working area for the individual Internet-Draft, "Enduser perspective".
 
-* [Editor's Copy](https://Farzaneh-Unicode.github.io/enduser-AIpref/#go.draft-farzdusa-Aipref-enduser.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-farzdusa-Aipref-enduser)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-farzdusa-Aipref-enduser)
-* [Compare Editor's Copy to Individual Draft](https://Farzaneh-Unicode.github.io/enduser-AIpref/#go.draft-farzdusa-Aipref-enduser.diff)
+* [Editor's Copy](https://Farzaneh-Unicode.github.io/enduser-aipref/#go.draft-farzdusa-aipref-enduser.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-farzdusa-aipref-enduser)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-farzdusa-aipref-enduser)
+* [Compare Editor's Copy to Individual Draft](https://Farzaneh-Unicode.github.io/enduser-aipref/#go.draft-farzdusa-aipref-enduser.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/Farzaneh-Unicode/enduser-AIpref/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/Farzaneh-Unicode/enduser-aipref/blob/main/CONTRIBUTING.md).
 
 The contributing file also has tips on how to make contributions, if you
 don't already know how to do that.
